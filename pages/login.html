@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="../styles/loginstyles.css">
+    <script src="../scripts/script.js"></script>
+
+    <title>Visualis - Login</title>
+</head>
+
+
+<body>
+<header>
+    <div class="logo-container">
+        <img src="../images/logo.png" alt="Visualis">
+    </div>
+    <nav class="nav1">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="data.html">Visualize</a></li>
+            <li><a href="#about">About</a></li>
+            <li style="margin-left:auto"><a class="active" id="lastnav" href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="login-main-container">
+    <div class="loginhead">
+        <h1>Login</h1>
+    </div>
+    <div class="login-container">
+        <div class="loginbox">
+            <form action="process-login.php" method="post">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <input class="ddd" type="button" value="Submit" onclick="validateEmail()">
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+    function validateEmail() {
+        const emailInput = document.getElementById("email");
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+        if (!emailPattern.test(emailInput.value)) {
+            alert("Invalid email address. Please enter a valid email.");
+            emailInput.focus();
+        }
+    }
+</script>
+</body>
+</html>
+
+
+<!--
+<div class="lbox">
+    <div class="lllll">
+        <form action="process-login.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Login</button>
+
+        </form>
+    </div>
+
+-->

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/datastyles.css">
+    <script src="../scripts/script.js"></script>
+
+    <title>Visualis - Visualizer</title>
+</head>
+
+<body>
+<header>
+    <div class="logo-container">
+        <img src="../images/logo.png" alt="Visualis">
+    </div>
+    <nav class="nav1">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a class="active" href="data.html">Visualize</a></li>
+            <li><a href="#about">About</a></li>
+            <li style="margin-left:auto"><a id="lastnav" href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="data-main-container">
+    <div>
+        <div class="top">
+            <div class="side">
+                <div class="upload">
+                    <form>
+                        <!-- TODO: hide browse button and make my own -->
+                        <label for="fileUpload">Choose a file to upload:</label>
+                        <br>
+                        <input type="file" id="fileUpload" name="file" accept=".text/csv, .json, .xlx, .txt">
+                        <br>
+                        <br>
+                        <input type="submit" value="Upload">
+                    </form>
+
+                </div>
+                <div class="option">
+                    <label for="dropdown1">Add:</label>
+                    <select id="dropdown1" name="myDropdown">
+                        <option value="row">Row</option>
+                        <option value="column">Column</option>
+
+                    </select>
+
+                    <input type="text" id="inputText" name="inputText">
+                    <button type="button" onclick="addToTable()">Add to Table</button>
+
+                </div>
+                <div class="option">
+                    <label for="dropdown2">Choose a chart:</label>
+                    <select id="dropdown2" name="myDropdown">
+                        <option value="../images/data-animated-3.gif">Bar Chart</option>
+                        <option value="../images/data-animated-4.gif">Line Graph</option>
+                        <option value="../images/animated_scatterplot.gif">Scatter</option>
+                    </select>
+
+
+                </div>
+                <div class="option">
+                    <label for="dropdown3">Choose a Data Point to Sort by:</label>
+                    <select id="dropdown3" name="myDropdown">
+                        <option value="" disabled selected>Select Data Point</option>
+                    </select>
+
+                </div>
+
+            </div>
+            <div class="table-container">
+                <div class="table">
+
+                    <table id="table">
+
+                        <thead>
+                        <tr>
+                            <th>Data1</th>
+                            <th>Data2</th>
+
+                        </tr>
+                        </thead>
+
+                    </table>
+
+                </div>
+                <!--
+                <button onclick="addRow()">Add Row</button>
+                <button onclick="addColumn()">Add Column</button>
+                -->
+            </div>
+        </div>
+        <div class="middle">
+            <div class="visbutton-container">
+                <label>Click Here to Visualize</label>
+                <br>
+
+                <br>
+                <br>
+                <button id="showImage">Visualize</button>
+            </div>
+            <div class="graph-container">
+                <div class="graph">
+                    <img id="selectedImage" src="" alt="Selected plot">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Sample data
+        const data = [
+            {name: "John", age: 30},
+            {name: "Alice", age: 25},
+            {name: "Bob", age: 35},
+            {name: "Eve", age: 28}
+        ];
+
+        // Get a reference to the table
+        const table = document.getElementById("table");
+
+        // Loop through the data and populate the table
+        data.forEach(person => {
+            const row = table.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            cell1.innerHTML = person.name;
+            cell2.innerHTML = person.age;
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Get the table element
+        const table = document.getElementById("table");
+
+        // Get the header row
+        const headerRow = table.getElementsByTagName("thead")[0].rows[0];
+
+        // Get the dropdown select element
+        const dropdown = document.getElementById("dropdown3");
+
+        // Populate the dropdown options from the table header
+        for (let i = 0; i < headerRow.cells.length; i++) {
+            const cell = headerRow.cells[i];
+            const option = document.createElement("option");
+            option.value = i; // Identify which column was selected
+            option.textContent = cell.textContent;
+            dropdown.appendChild(option);
+        }
+
+        // Add an event listener to respond to the selection
+        dropdown.addEventListener("change", function () {
+            const selectedColumn = this.value; // Get the selected column
+            // Do something with the selectedColumn
+            console.log("Selected column:", selectedColumn);
+        });
+    });
+</script>
+<script>
+    // Get references to HTML elements
+    const imageSelect = document.getElementById("dropdown2");
+    const showImageButton = document.getElementById("showImage");
+    const selectedImage = document.getElementById("selectedImage");
+
+    // Add a click event listener to the button
+    showImageButton.addEventListener("click", function () {
+        // Get the selected option's value
+        const selectedOption = imageSelect.value;
+
+        // Set the image source based on the selected option
+        selectedImage.src = selectedOption;
+    });
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

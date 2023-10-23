@@ -1,0 +1,61 @@
+/**********************-login-container-**********************/
+
+.login-main-container {
+    display: flex;
+    flex-direction: column;
+    font-family: "Arial Rounded MT Bold",sans-serif;
+    text-align: center;
+    justify-content: center;
+
+
+
+
+}
+.loginhead h1 {
+    font-family: "Arial Rounded MT Bold", sans-serif;
+}
+
+/**********************-login-container-**********************/
+.login-container {
+    display: flex;
+    justify-content: center;
+}
+
+.loginbox {
+    width: 300px;
+    height: 400px;
+    border: 3px solid lightgrey;
+    border-radius: 5px;
+
+}
+
+/**********************-form-**********************/
+
+.loginbox form {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+/**********************-form innards-**********************/
+
+form label {
+    margin: 10px;
+
+}
+form input {
+    margin:15px;
+
+}
+
+.ddd {
+    font-family: "Arial Rounded MT Bold", sans-serif;
+    text-align: center;
+    vertical-align: center;
+    padding: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+
+
+}
